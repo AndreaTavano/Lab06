@@ -28,4 +28,19 @@ class Controller:
         self._view.update()
 
     # Altre Funzioni Event Handler
-    # TODO
+    def handler1(self,e):
+        result=self._model.get_strumenti()
+        self._view.lista_strumenti.controls.clear()
+        if result is not None:
+            for strumento in result:
+                self._view.lista_strumenti.controls.append(ft.Text(str(strumento)))
+        self._view.update()
+
+    def handler2(self,e):
+        tipo=self._view.input_tipo_strumento.value
+        result=self._model.cerca_strumenti_per_tipo(tipo)
+        self._view.lista_strumenti_ricerca.controls.clear()
+        if result is not None:
+            for strumento in result:
+                self._view.lista_strumenti_ricerca.controls.append(ft.Text(str(strumento)))
+        self._view.update()
